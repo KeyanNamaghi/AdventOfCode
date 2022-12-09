@@ -21,8 +21,8 @@ const pullTail = (leader, follower, last) => {
   // Don't need to pull
   if (Math.abs(xDelta) <= 1 && Math.abs(yDelta) <= 1) return
 
-  if (xDelta) follower.x += xDelta > 0 ? 1 : -1
-  if (yDelta) follower.y += yDelta > 0 ? 1 : -1
+  follower.x += Math.sign(xDelta)
+  follower.y += Math.sign(yDelta)
 
   if (last) visited[`${follower.x},${follower.y}`] = true
 }
