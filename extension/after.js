@@ -26,10 +26,16 @@ const arr = [].slice
     return scoreForB - scoreForA
   })
   .forEach((val, index, array) => {
-    if (index > 0 && index < array.length && calculateScore(val) >= calculateScore(array[index - 1])) {
-      val.childNodes[0].textContent = array[index - 1].childNodes[0].textContent
+    const previousText = array[(index === 0 ? 1 : index) - 1].childNodes[0].textContent
+    let previous = previousText.slice(0, previousText.length - 1)
+
+    if (index === 0) {
+      val.childNodes[0].textContent = ' 1)'
+    } else if (index > 0 && index < array.length && calculateScore(val) >= calculateScore(array[index - 1])) {
+      val.childNodes[0].textContent = `${previous})`
     } else {
-      val.childNodes[0].textContent = index + 1 > 9 ? index + 1 : ` ${index + 1}`
+      val.childNodes[0].textContent =
+        Number(previous) + 1 > 9 ? `${Number(previous) + 1})` : ` ${Number(previous) + 1})`
     }
 
     document.body.appendChild(val)

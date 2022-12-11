@@ -1,8 +1,8 @@
 {
-  "name": "Fresh Chrome Extension",
-  "description": "Fully functional, useful bare minimum Google Chrome extension boilerplate [Manifest V3].",
-  "homepage_url": "https://github.com/llagerlof/fresh-chrome-extension",
-  "version": "2.0.0",
+  "name": "Dumb AoC Leaderboard Hack",
+  "description": "Hide the score and sort normally for advent of code.",
+  "homepage_url": "https://adventofcode.com/2022/leaderboard/",
+  "version": "1.0.0",
   "manifest_version": 3,
   "action": {
     "default_title": "execute.js will run (watch the Chrome DevTools' console)"
