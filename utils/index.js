@@ -1,9 +1,12 @@
 import fs from 'fs'
 
-const data = `const useTest = true
+const data = `const t0 = performance.now()
+const useTest = true
 const file = Bun.file(useTest ? 'test.txt' : 'data.txt')
 const contents = await file.text()
 const lines = contents.split('\\n')
+const t1 = performance.now()
+console.log(\`Took \${(t1 - t0).toPrecision(3)} ms.\`)
 `
 
 for (let i = 1; i <= 25; i++) {
