@@ -6,18 +6,20 @@ const contents = await file.text()
 const lines = contents.split('\\n')
 `
 
-const [, , day, yearOverride] = Bun.argv
-const directoryPath = `./${yearOverride || new Date().getFullYear()}/${day}`
+for (let i = 1; i <= 25; i++) {
+  const directoryPath = `./${new Date().getFullYear()}/${i}`
 
-fs.mkdir(directoryPath, async (err) => {
-  if (err) {
-    console.error('Error creating directory:', err.message)
-    return
-  }
+  fs.mkdir(`./${directoryPath}`, async (err) => {
+    if (err) {
+      console.error('Error creating directory:', err.message)
+      return
+    }
 
-  console.log('Directory created successfully.')
-  await Bun.write(`${directoryPath}/data.txt`, '')
-  await Bun.write(`${directoryPath}/test.txt`, '')
-  await Bun.write(`${directoryPath}/a.js`, data)
-  await Bun.write(`${directoryPath}/b.js`, data)
-})
+    console.log('Directory created successfully.')
+    await Bun.write(`${directoryPath}/data.txt`, '')
+    await Bun.write(`${directoryPath}/test.txt`, '')
+    await Bun.write(`${directoryPath}/a.js`, data)
+    await Bun.write(`${directoryPath}/b.js`, data)
+    await Bun.write(`${directoryPath}/.gitignore`, '*')
+  })
+}
